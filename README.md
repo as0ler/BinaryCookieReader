@@ -1,5 +1,7 @@
 # BinaryCookieReader
 
+Cloned from http://securitylearn.net/wp-content/uploads/tools/iOS/BinaryCookieReader.py
+
 ##Usage
 
 `
