@@ -37,7 +37,7 @@ Cookies.binarycookies file is composed of several pages and each page can have o
 6. Next, a 4 byte integer which is the offset in number of bytes between the name field and the start of the cookie record.
 7. Next, a 4 byte integer which is the offset in number of bytes between the path field and the start of the cookie record.
 8. Next, a 4 byte integer which is the offset in number of bytes between the value field and the start of the cookie record.
-9. The next 8 bytes represents the end of the cookie and it is always 0x0000000000000000.
+9. The next 8 bytes represents the end of the cookie header and it is always 0x0000000000000000.
 10. The next 8 bytes are a long integer storing the cookie expiration date. Date is in Mac epoch format (Mac absolute time). Mac epoch format starts from Jan 2001.
 11. The next 8 bytes are a long integer storing the cookie creation date.
 12. Next to that, the cookie contains the actual cookie domain, name, path & value (null terminated strings). The order is not specific and they can appear in any order.
