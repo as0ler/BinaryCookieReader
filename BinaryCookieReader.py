@@ -13,12 +13,12 @@
 
 import sys
 from struct import unpack
-from StringIO import StringIO
+from io import StringIO
 from time import strftime, gmtime
 
 if len(sys.argv)!=2:
-	print "\nUsage: Python BinaryCookieReader.py [Full path to Cookies.binarycookies file] \n"
-	print "Example: Python BinaryCookieReader.py C:\Cookies.binarycookies"
+	print("\nUsage: Python BinaryCookieReader.py [Full path to Cookies.binarycookies file] \n")
+	print("Example: Python BinaryCookieReader.py C:\Cookies.binarycookies")
 	sys.exit(0)
 	
 FilePath=sys.argv[1]
@@ -26,13 +26,13 @@ FilePath=sys.argv[1]
 try:
 	binary_file=open(FilePath,'rb')
 except IOError as e:
-	print 'File Not Found :'+ FilePath
+	print('File Not Found :'+ FilePath)
 	sys.exit(0)
    
 file_header=binary_file.read(4)                             #File Magic String:cook 
 
 if str(file_header)!='cook':
-	print "Not a Cookies.binarycookie file"
+	print("Not a Cookies.binarycookie file")
 	sys.exit(0)
 	
 num_pages=unpack('>i',binary_file.read(4))[0]               #Number of pages in the binary file: 4 bytes
@@ -46,9 +46,9 @@ for ps in page_sizes:
 	pages.append(binary_file.read(ps))                      #Grab individual pages and each page will contain >= one cookie
 
 	
-print "#*************************************************************************#"
-print "# BinaryCookieReader: developed by Satishb3: http://www.securitylearn.net #"
-print "#*************************************************************************#"
+print("#*************************************************************************#")
+print("# BinaryCookieReader: developed by Satishb3: http://www.securitylearn.net #")
+print("#*************************************************************************#")
 
 for page in pages:
 	page=StringIO(page)                                     #Converts the string to a file. So that we can use read/write operations easily.
@@ -126,6 +126,6 @@ for page in pages:
 			value=value+str(va)
 			va=cookie.read(1)
 		
-		print 'Cookie : '+name+'='+value+'; domain='+url+'; path='+path+'; '+'expires='+expiry_date+'; '+cookie_flags
+		print('Cookie : '+name+'='+value+'; domain='+url+'; path='+path+'; '+'expires='+expiry_date+'; '+cookie_flags)
 		
 binary_file.close()
